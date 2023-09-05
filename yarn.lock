@@ -1106,11 +1106,13 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
-"@youwol/cdn-client@^1.0.2":
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/@youwol/cdn-client/-/cdn-client-1.0.10.tgz#2e240601625f3fe6d95a69f951c35cbd673f21ff"
-  integrity sha512-tUYFztmQ6kztkm1HBl7Qq0Fxbt5iuLuc9j+x9FXhti79UKN8121tBhLdG49hnlQcIIPw54UI4GOK2ggrDQcCWQ==
+"@youwol/cdn-client@^2.0.6":
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/@youwol/cdn-client/-/cdn-client-2.0.6.tgz#9703e0ac6a4bb7adbc780c259ce70bc4e34f6ba0"
+  integrity sha512-RYhm/1wUiyZ+IQLh7DuN2dxZ6Yu10AZQMuYpgDOU+Lkfj17fWrmXZdluzJGFFYoeMqjCQuTmTYES+Zc03hu4PQ==
   dependencies:
+    "@youwol/flux-view" "^1.1.0"
+    rxjs "^6.5.5"
     semver "^7.3.4"
 
 "@youwol/eslint-config@^0.1.0":
@@ -1128,12 +1130,20 @@
     eslint-plugin-tsdoc "^0.2.17"
     eslint-plugin-unused-imports "^2.0.0"
 
-"@youwol/flux-view@^1.0.3":
+"@youwol/flux-view@^1.0.3", "@youwol/flux-view@^1.1.0":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@youwol/flux-view/-/flux-view-1.1.1.tgz#66c41672b913b99ace5ce6e70d05ad6a9daea579"
   integrity sha512-/EWXYnRRpRI5BMu9IRcwqPJmlf9MZQMS6FaRp3yCzr9RAxhuAbvSZUDN18OJGg3hUvUtRTmQOUWtfQaVypH8Tg==
   dependencies:
     "@ungap/custom-elements" "1.2.0"
+    rxjs "^6.5.5"
+
+"@youwol/fv-tree@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@youwol/fv-tree/-/fv-tree-0.2.3.tgz#deb21ba4a9824d32abb914507087d1d4f35157d6"
+  integrity sha512-6BgLcOavufjl3VbonUW07I+gt/zEFZLaTfmMAxixFVCokK0vWb5h1skahskgPfkU4IuqEBQ6YPok6uoSaUExZQ==
+  dependencies:
+    "@youwol/flux-view" "^1.0.3"
     rxjs "^6.5.5"
 
 "@youwol/jest-preset@0.1.0":
@@ -1146,6 +1156,15 @@
     jest-environment-jsdom "^29.4.3"
     jest-junit "^15.0.0"
     ts-jest "^29.0.5"
+
+"@youwol/logging@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@youwol/logging/-/logging-0.1.1.tgz#98e2c54e27ffe0693be6003a69704910a9e1ee57"
+  integrity sha512-QMkiV0+FVUcd33Aq45L5m8qJzfMd6XS/dt/gnbVSAPyGpHf9aaezvumDxBkTwdNz19RtD0l6RA9qduKZ4eGd9w==
+  dependencies:
+    "@youwol/flux-view" "^1.1.0"
+    "@youwol/fv-tree" "^0.2.3"
+    rxjs "^6.5.5"
 
 "@youwol/prettier-config@^0.1.0":
   version "0.1.0"
@@ -1164,6 +1183,17 @@
     "@types/node" "^18.14.2"
     ts-node "^10.9.1"
     typescript "^4.9.5"
+
+"@youwol/vsf-core@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@youwol/vsf-core/-/vsf-core-0.2.0.tgz#4694d646b9e178478aa705565525b079b9c16cd5"
+  integrity sha512-Xn8OniEseAwJ9OS+8Cz2GXd2NLLRpQa2NgY0kEESLruremmBHRb/CNPugCLYpRE/edD7vmwdF5dbZhn5OScnEw==
+  dependencies:
+    "@youwol/cdn-client" "^2.0.6"
+    "@youwol/fv-tree" "^0.2.3"
+    "@youwol/logging" "^0.1.1"
+    rxjs "^6.5.5"
+    ts-essentials "^9.3.1"
 
 abab@^2.0.6:
   version "2.0.6"
@@ -4460,6 +4490,11 @@ trim-newlines@^4.0.2:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/trim-newlines/-/trim-newlines-4.1.1.tgz#28c88deb50ed10c7ba6dc2474421904a00139125"
   integrity sha512-jRKj0n0jXWo6kh62nA5TEh3+4igKDXLvzBJcPpiizP7oOolUrYIxmVBG9TOtHYFHoddUk6YvAkGeGoSVTXfQXQ==
+
+ts-essentials@^9.3.1:
+  version "9.4.0"
+  resolved "https://registry.yarnpkg.com/ts-essentials/-/ts-essentials-9.4.0.tgz#1d841fee4cd1485f84dec82bce828f90a6cfdd92"
+  integrity sha512-s4BzWZmTh926caZO7XF7MMbwCn1BioT3s3r9hT8ARnwW//30OD0XioEsMyq3ORAHP/deN4Zkst2ZvxXmL+tG6g==
 
 ts-jest@^29.0.5:
   version "29.1.1"

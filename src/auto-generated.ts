@@ -1,22 +1,16 @@
 
 const runTimeDependencies = {
     "externals": {
-        "@youwol/cdn-client": "^1.0.2",
-        "@youwol/flux-view": "^1.0.3",
+        "@youwol/vsf-core": "^0.2.0",
         "rxjs": "^6.5.5"
     },
     "includedInBundle": {}
 }
 const externals = {
-    "@youwol/cdn-client": {
-        "commonjs": "@youwol/cdn-client",
-        "commonjs2": "@youwol/cdn-client",
-        "root": "@youwol/cdn-client_APIv1"
-    },
-    "@youwol/flux-view": {
-        "commonjs": "@youwol/flux-view",
-        "commonjs2": "@youwol/flux-view",
-        "root": "@youwol/flux-view_APIv1"
+    "@youwol/vsf-core": {
+        "commonjs": "@youwol/vsf-core",
+        "commonjs2": "@youwol/vsf-core",
+        "root": "@youwol/vsf-core_APIv02"
     },
     "rxjs": {
         "commonjs": "rxjs",
@@ -25,13 +19,9 @@ const externals = {
     }
 }
 const exportedSymbols = {
-    "@youwol/cdn-client": {
-        "apiKey": "1",
-        "exportedSymbol": "@youwol/cdn-client"
-    },
-    "@youwol/flux-view": {
-        "apiKey": "1",
-        "exportedSymbol": "@youwol/flux-view"
+    "@youwol/vsf-core": {
+        "apiKey": "02",
+        "exportedSymbol": "@youwol/vsf-core"
     },
     "rxjs": {
         "apiKey": "6",
@@ -42,8 +32,7 @@ const exportedSymbols = {
 const mainEntry : {entryFile: string,loadDependencies:string[]} = {
     "entryFile": "./index.ts",
     "loadDependencies": [
-        "@youwol/cdn-client",
-        "@youwol/flux-view",
+        "@youwol/vsf-core",
         "rxjs"
     ]
 }
