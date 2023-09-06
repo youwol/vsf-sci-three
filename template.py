@@ -9,6 +9,7 @@ from youwol.pipelines.pipeline_typescript_weback_npm import (
     generate_template,
     Bundles,
     MainModule,
+    AuxiliaryModule,
 )
 from youwol.utils import parse_json
 
@@ -29,6 +30,7 @@ template = Template(
             externals={
                 "@youwol/vsf-core": "^0.2.0",
                 "rxjs": "^6.5.5",
+                "three": "^0.152.0",
             }
         )
     ),
@@ -36,7 +38,14 @@ template = Template(
         mainModule=MainModule(
             entryFile="./index.ts",
             loadDependencies=["@youwol/vsf-core", "rxjs"],
-        )
+        ),
+        auxiliaryModules=[
+            AuxiliaryModule(
+                name="gocad",
+                entryFile="./lib/gocad/index.ts",
+                loadDependencies=["@youwol/vsf-core", "rxjs", "three"],
+            ),
+        ],
     ),
     userGuide=True,
 )

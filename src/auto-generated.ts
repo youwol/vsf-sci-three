@@ -2,7 +2,8 @@
 const runTimeDependencies = {
     "externals": {
         "@youwol/vsf-core": "^0.2.0",
-        "rxjs": "^6.5.5"
+        "rxjs": "^6.5.5",
+        "three": "^0.152.0"
     },
     "includedInBundle": {}
 }
@@ -16,6 +17,19 @@ const externals = {
         "commonjs": "rxjs",
         "commonjs2": "rxjs",
         "root": "rxjs_APIv6"
+    },
+    "three": {
+        "commonjs": "three",
+        "commonjs2": "three",
+        "root": "THREE_APIv0152"
+    },
+    "rxjs/operators": {
+        "commonjs": "rxjs/operators",
+        "commonjs2": "rxjs/operators",
+        "root": [
+            "rxjs_APIv6",
+            "operators"
+        ]
     }
 }
 const exportedSymbols = {
@@ -26,6 +40,10 @@ const exportedSymbols = {
     "rxjs": {
         "apiKey": "6",
         "exportedSymbol": "rxjs"
+    },
+    "three": {
+        "apiKey": "0152",
+        "exportedSymbol": "THREE"
     }
 }
 
@@ -37,7 +55,17 @@ const mainEntry : {entryFile: string,loadDependencies:string[]} = {
     ]
 }
 
-const secondaryEntries : {[k:string]:{entryFile: string, name: string, loadDependencies:string[]}}= {}
+const secondaryEntries : {[k:string]:{entryFile: string, name: string, loadDependencies:string[]}}= {
+    "gocad": {
+        "entryFile": "./lib/gocad/index.ts",
+        "loadDependencies": [
+            "@youwol/vsf-core",
+            "rxjs",
+            "three"
+        ],
+        "name": "gocad"
+    }
+}
 
 const entries = {
      '@youwol/vsf-sci-three': './index.ts',
