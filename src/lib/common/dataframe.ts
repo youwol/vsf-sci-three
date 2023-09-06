@@ -1,0 +1,161 @@
+import { Serie } from './serie'
+
+export const merge = (dfs: DataFrame[], index?: string): DataFrame => {
+    // What if multiple column with same name
+    // What about userData, metaData
+    const series = dfs.reduce((acc, e) => ({ ...acc, ...e.series }), {})
+    const userData = dfs.reduce((acc, e) => ({ ...acc, ...e.userData }), {})
+    const metaData = dfs.reduce((acc, e) => ({ ...acc, ...e.metaData }), {})
+
+    return DataFrame.create({ series, userData, metaData, index })
+}
+
+export const append = (
+    { series, index, metaData, userData }: DataFrame,
+    news: { [key: string]: Serie },
+): DataFrame => {
+    //! need to check that rows count are compatible
+    return DataFrame.create({
+        series: { ...series, ...news },
+        index,
+        metaData,
+        userData,
+    })
+}
+
+export const insertSerie = ({
+    df,
+    serie,
+    name,
+}: {
+    df: DataFrame
+    serie: Serie
+    name: string
+}): DataFrame => {
+    //! need to check that rows count are compatible
+    const names = Object.entries(df.series).map(([name]) => name)
+    const count = names.length !== 0 ? df.series[names[0]].count : 0
+
+    if (count !== 0 && serie.count !== count) {
+        throw new Error(
+            'Provided serie count must be equal to existing series count',
+        )
+    }
+
+    df.series[name] = serie
+    return df
+}
+
+/**
+ */
+export class DataFrame {
+    /**
+     * Mapping between column id and serie
+     */
+    public readonly series: { [key: string]: Serie }
+
+    /**
+     * Convenient method to iterate over all series
+     * @example
+     * ```ts
+     * const df = DataFrame.create({
+     *      series: {
+     *          a: ...,
+     *          b: ...,
+     *      }
+     * })
+     *
+     * df.forEach( (name, serie, i) => {
+     *      console.log('serie named', name,
+     *                  'at index', i,
+     *                  ', count=', serie.count,
+     *                  ', itemSize=', serie.itemSize
+     *      )
+     * })
+     * ```
+     */
+    public forEach(cb: (name: string, serie: Serie, i: number) => void) {
+        Object.entries(this.series).forEach(([name, serie], i) =>
+            cb(name, serie, i),
+        )
+    }
+
+    /**
+     * If provided, the column that acts as index
+     */
+    public readonly index: string | undefined = undefined
+
+    /**
+     *
+     * Mutable dictionary to store consumer data (context information of the usage)
+     */
+    public userData: { [key: string]: any } = {}
+
+    /**
+     *
+     * Dictionary to store metadata (context information of the dataframe's creation)
+     */
+    public readonly metaData: { [key: string]: any } = {}
+
+    private constructor(
+        series: { [key: string]: Serie },
+        index: string,
+        userData: { [key: string]: any },
+        metaData: { [key: string]: any },
+    ) {
+        this.series = series
+        this.index = index
+        this.userData = userData
+        this.metaData = metaData
+    }
+
+    /**
+     * Check if the serie named name is in the dataframe
+     * @param name
+     */
+    contains(name: string) {
+        return this.series[name] !== undefined
+    }
+
+    /**
+     * The dataframe class which contains a list of {@link Serie}
+     * @example
+     * ```ts
+     * const df = DataFrame.create({
+     *     series: {
+     *          a: createEmptySerie({
+     *              Type: Float32Array, count:2, itemSize:3, shared: true
+     *          }),
+     *          b: createEmptySerie({
+     *              Type: Float64Array, count:2, itemSize:3, shared: false
+     *          }),
+     *          c: createSerie({data: [0,1,2,3,4,5,6,7,8,9], itemSize: 5}),
+     *          d: createSerie({data: [0,1,2,3,4,5,6,7,8,9], itemSize: 5}),
+     *     }
+     * })
+     * ```
+     * @category DataFrame
+     */
+    static create({
+        series,
+        userData,
+        metaData,
+        index,
+    }: {
+        series: { [key: string]: Serie }
+        index?: string
+        userData?: { [key: string]: any }
+        metaData?: { [key: string]: any }
+    }): DataFrame {
+        return new DataFrame(series, index, userData || {}, metaData || {})
+    }
+
+    clone() {
+        return new DataFrame(
+            this.series,
+            this.index,
+            this.userData,
+            this.metaData,
+        )
+    }
+}
