@@ -1,10 +1,10 @@
-import { Contracts, Modules, Configurations } from '@youwol/vsf-core'
+import { Contracts, Modules } from '@youwol/vsf-core'
 import { map } from 'rxjs/operators'
 import { decodeGocadTS } from './loaders'
 import { BufferGeometry, BufferAttribute, Vector3 } from 'three'
 export const configuration = {
     schema: {
-        center: new Configurations.Boolean({ value: false }),
+        center: Modules.booleanAttribute({ value: false }),
     },
 }
 
