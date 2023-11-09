@@ -1285,10 +1285,10 @@
   resolved "https://registry.yarnpkg.com/@youwol/tsconfig/-/tsconfig-1.0.0.tgz#76e8569781dc4bdc53f27dc0b4f3cd6e17e1bd52"
   integrity sha512-R+8tI08X56yOpSfGTJ2gG5GWZVpirr63Prmtfe3EQgc0pXhNpE4kzoxS6ByYsRZPn+ydGJxE61P424uycm+rNQ==
 
-"@youwol/vsf-core@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@youwol/vsf-core/-/vsf-core-0.2.3.tgz#979f508960514ef4fe16cd93f1e746e8c6821a77"
-  integrity sha512-Dn4m+C8XKD85bNdRMBjqalKM3N96ExP3NnJyqZJiOmNoNMvaR+SeZqMjn9LsxiLZR143T2Mf5LMvDajnbRZK2w==
+"@youwol/vsf-core@^0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@youwol/vsf-core/-/vsf-core-0.2.4.tgz#535bd2123bad6fe34914a4d462356ba28cc32f2d"
+  integrity sha512-BqB1+RCDaQhzV/cEg1gWjR1VeZAlFnGsT1O2UoZiVXYmjZSK8ToMp99NrvzntO0IQp6L9bU8UmUmBPoxHtnL1g==
   dependencies:
     "@youwol/cdn-client" "^2.0.6"
     "@youwol/fv-tree" "^0.2.3"
