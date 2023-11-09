@@ -286,7 +286,7 @@ const arrayMax = (a: IArray) =>
     a.reduce((acc, cur) => (cur > acc ? cur : acc), 0)
 
 export function createTyped<T>(
-    Type: any,
+    Type,
     array: number | number[],
     shared: boolean,
 ): T {

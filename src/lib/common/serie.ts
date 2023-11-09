@@ -110,7 +110,7 @@ export class Serie<T extends IArray = IArray> {
             return new Serie(array, itemSize, false, userData, dimension) // ! use dimension
         }
 
-        const shared = (array as any).buffer instanceof SharedArrayBuffer
+        const shared = array['buffer'] instanceof SharedArrayBuffer
         return new Serie(array, itemSize, shared, userData, dimension) // ! use dimension
     }
     /**
@@ -158,7 +158,7 @@ export class Serie<T extends IArray = IArray> {
         if (this.isArray) {
             return false
         }
-        return (this.array as any).buffer instanceof SharedArrayBuffer
+        return this.array['buffer'] instanceof SharedArrayBuffer
     }
 
     at(i: number) {
@@ -316,7 +316,7 @@ export function createFrom<T extends IArray>({
 
     let isShared = false
     if (typeof SharedArrayBuffer !== 'undefined') {
-        isShared = (array as any).buffer instanceof SharedArrayBuffer
+        isShared = array['buffer'] instanceof SharedArrayBuffer
     }
 
     if (array instanceof Int8Array) {

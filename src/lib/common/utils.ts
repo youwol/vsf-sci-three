@@ -54,7 +54,7 @@ export function createArray(
  * @category Creation
  */
 export function createTyped<T extends IArray = IArray>(
-    Type: any,
+    Type,
     array: number | number[],
     shared: boolean,
 ): T {
@@ -103,7 +103,7 @@ export function createEmptySerie(
         shared = false,
         userData,
     }: {
-        Type?: any
+        Type?
         count: number
         itemSize?: number
         dimension?: number
