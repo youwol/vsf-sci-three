@@ -57,13 +57,13 @@ export class Serie<T extends IArray = IArray> {
      *
      * Mutable dictionary to store consumer data (context information of the usage)
      */
-    public userData: { [key: string]: any } = {}
+    public userData: { [key: string]: unknown } = {}
 
     private constructor(
         array: T,
         itemSize: number,
         shared: boolean,
-        userData: { [key: string]: any } = {},
+        userData: { [key: string]: unknown } = {},
         dimension = 3,
     ) {
         if (array.length % itemSize !== 0) {
@@ -78,8 +78,11 @@ export class Serie<T extends IArray = IArray> {
         this.dimension = dimension // ! use dimension
     }
 
-    static isSerie(s: any): boolean {
-        return 'array' in s && 'itemSize' in s
+    static isSerie(s: unknown): s is Serie {
+        return (
+            (s as Serie).array !== undefined &&
+            (s as Serie).itemSize !== undefined
+        )
     }
 
     static create<T extends IArray = IArray>({
@@ -90,7 +93,7 @@ export class Serie<T extends IArray = IArray> {
     }: {
         array: T
         itemSize: number
-        userData?: { [key: string]: any }
+        userData?: { [key: string]: unknown }
         dimension?: number
     }) {
         // Type is either a Int8Array, Uint8Array etc...
@@ -107,7 +110,7 @@ export class Serie<T extends IArray = IArray> {
             return new Serie(array, itemSize, false, userData, dimension) // ! use dimension
         }
 
-        const shared = (array as any).buffer instanceof SharedArrayBuffer
+        const shared = array['buffer'] instanceof SharedArrayBuffer
         return new Serie(array, itemSize, shared, userData, dimension) // ! use dimension
     }
     /**
@@ -155,7 +158,7 @@ export class Serie<T extends IArray = IArray> {
         if (this.isArray) {
             return false
         }
-        return (this.array as any).buffer instanceof SharedArrayBuffer
+        return this.array['buffer'] instanceof SharedArrayBuffer
     }
 
     at(i: number) {
@@ -214,7 +217,7 @@ export class Serie<T extends IArray = IArray> {
     /**
      * Map the items
      */
-    map(callback: (item, index, serie) => any) {
+    map(callback: (item, index, serie) => number) {
         const tmp = callback(this.itemAt(0), 0, this)
 
         const itemSize = Array.isArray(tmp) ? tmp.length : 1
@@ -313,7 +316,7 @@ export function createFrom<T extends IArray>({
 
     let isShared = false
     if (typeof SharedArrayBuffer !== 'undefined') {
-        isShared = (array as any).buffer instanceof SharedArrayBuffer
+        isShared = array['buffer'] instanceof SharedArrayBuffer
     }
 
     if (array instanceof Int8Array) {
