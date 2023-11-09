@@ -108,7 +108,7 @@ export function createEmptySerie(
         itemSize?: number
         dimension?: number
         shared?: boolean
-        userData?: { [key: string]: any }
+        userData?: { [key: string]: unknown }
     }, // ! use dimension
 ): Serie {
     if (itemSize <= 0) {

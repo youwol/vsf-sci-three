@@ -89,19 +89,19 @@ export class DataFrame {
      *
      * Mutable dictionary to store consumer data (context information of the usage)
      */
-    public userData: { [key: string]: any } = {}
+    public userData: { [key: string]: unknown } = {}
 
     /**
      *
      * Dictionary to store metadata (context information of the dataframe's creation)
      */
-    public readonly metaData: { [key: string]: any } = {}
+    public readonly metaData: { [key: string]: unknown } = {}
 
     private constructor(
         series: { [key: string]: Serie },
         index: string,
-        userData: { [key: string]: any },
-        metaData: { [key: string]: any },
+        userData: { [key: string]: unknown },
+        metaData: { [key: string]: unknown },
     ) {
         this.series = series
         this.index = index
@@ -144,8 +144,8 @@ export class DataFrame {
     }: {
         series: { [key: string]: Serie }
         index?: string
-        userData?: { [key: string]: any }
-        metaData?: { [key: string]: any }
+        userData?: { [key: string]: unknown }
+        metaData?: { [key: string]: unknown }
     }): DataFrame {
         return new DataFrame(series, index, userData || {}, metaData || {})
     }

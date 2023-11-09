@@ -68,7 +68,7 @@ function loadGocadObject({
     let positions = []
     let indices = []
 
-    const objects: any[] = []
+    const objects: DataFrame[] = []
 
     const haveIndices = keyword !== ''
     const SEP = separator
