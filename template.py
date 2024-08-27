@@ -28,8 +28,8 @@ template = Template(
     dependencies=Dependencies(
         runTime=RunTimeDeps(
             externals={
-                "@youwol/vsf-core": "^0.2.4",
-                "rxjs": "^6.5.5",
+                "@youwol/vsf-core": "^0.3.1",
+                "rxjs": "^7.5.6",
                 "three": "^0.152.0",
             }
         )
@@ -37,7 +37,7 @@ template = Template(
     bundles=Bundles(
         mainModule=MainModule(
             entryFile="./index.ts",
-            loadDependencies=["@youwol/vsf-core", "rxjs"],
+            loadDependencies=["@youwol/vsf-core"],
         ),
         auxiliaryModules=[
             AuxiliaryModule(
