@@ -73,7 +73,7 @@ const entries = {
 export const setup = {
     name:'@youwol/vsf-sci-three',
         assetId:'QHlvdXdvbC92c2Ytc2NpLXRocmVl',
-    version:'0.1.2-wip',
+    version:'0.1.2',
     shortDescription:"Visual Studio Flow toolbox gathering modules related to 3D scientific visualizations.",
     developerDocumentation:'https://platform.youwol.com/applications/@youwol/cdn-explorer/latest?package=@youwol/vsf-sci-three&tab=doc',
     npmPackage:'https://www.npmjs.com/package/@youwol/vsf-sci-three',
@@ -119,7 +119,7 @@ export const setup = {
         const parameters = installParameters || {}
         const scripts = [
             ...(parameters.scripts || []),
-            `@youwol/vsf-sci-three#0.1.2-wip~dist/@youwol/vsf-sci-three/${entry.name}.js`
+            `@youwol/vsf-sci-three#0.1.2~dist/@youwol/vsf-sci-three/${entry.name}.js`
         ]
         const modules = [
             ...(parameters.modules || []),
