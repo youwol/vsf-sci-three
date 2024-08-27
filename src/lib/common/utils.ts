@@ -120,7 +120,7 @@ export function createEmptySerie(
 
     if (Type === undefined || Array.isArray(new Type(1))) {
         return Serie.create({
-            array: new Array(count * itemSize).fill(0),
+            array: new Array(count * itemSize).fill(0) as IArray,
             itemSize,
         })
     }
