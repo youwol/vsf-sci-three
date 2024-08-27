@@ -33,10 +33,12 @@ export function toolbox() {
                     typeId: 'gocad',
                     documentation: urlModuleDoc('Gocad'),
                     dependencies: {
-                        modules: setup.getCdnDependencies('gocad'),
-                        scripts: [
-                            `${setup.name}#${setup.version}~dist/${setup.name}/gocad.js`,
-                        ],
+                        esm: {
+                            modules: setup.getCdnDependencies('gocad'),
+                            scripts: [
+                                `${setup.name}#${setup.version}~dist/${setup.name}/gocad.js`,
+                            ],
+                        },
                     },
                 },
                 implementation: ({ fwdParams }) => {

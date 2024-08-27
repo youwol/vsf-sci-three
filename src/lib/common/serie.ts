@@ -311,7 +311,7 @@ export function createFrom<T extends IArray>({
     const length = count * itemSize
 
     if (Array.isArray(array)) {
-        return new Array(length)
+        return new Array(length) as IArray
     }
 
     let isShared = false

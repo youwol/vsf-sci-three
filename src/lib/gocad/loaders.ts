@@ -358,7 +358,7 @@ function createObject({
                   series: {
                       positions: posSerie,
                       indices:
-                          arrayMax(indices) > 65535
+                          arrayMax(indices as IArray) > 65535
                               ? Serie.create({
                                     array: createTyped<Uint32Array>(
                                         Uint32Array,
