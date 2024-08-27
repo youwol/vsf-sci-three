@@ -1,8 +1,8 @@
 
 const runTimeDependencies = {
     "externals": {
-        "@youwol/vsf-core": "^0.2.4",
-        "rxjs": "^6.5.5",
+        "@youwol/vsf-core": "^0.3.1",
+        "rxjs": "^7.5.6",
         "three": "^0.152.0"
     },
     "includedInBundle": {}
@@ -11,47 +11,46 @@ const externals = {
     "@youwol/vsf-core": {
         "commonjs": "@youwol/vsf-core",
         "commonjs2": "@youwol/vsf-core",
-        "root": "@youwol/vsf-core_APIv02"
+        "root": "@youwol/vsf-core_APIv03"
     },
     "rxjs": {
         "commonjs": "rxjs",
         "commonjs2": "rxjs",
-        "root": "rxjs_APIv6"
-    },
-    "three": {
-        "commonjs": "three",
-        "commonjs2": "three",
-        "root": "THREE_APIv0152"
+        "root": "rxjs_APIv7"
     },
     "rxjs/operators": {
         "commonjs": "rxjs/operators",
         "commonjs2": "rxjs/operators",
         "root": [
-            "rxjs_APIv6",
+            "rxjs_APIv7",
             "operators"
         ]
+    },
+    "three": {
+        "commonjs": "three",
+        "commonjs2": "three",
+        "root": "three_APIv0152"
     }
 }
 const exportedSymbols = {
     "@youwol/vsf-core": {
-        "apiKey": "02",
+        "apiKey": "03",
         "exportedSymbol": "@youwol/vsf-core"
     },
     "rxjs": {
-        "apiKey": "6",
+        "apiKey": "7",
         "exportedSymbol": "rxjs"
     },
     "three": {
         "apiKey": "0152",
-        "exportedSymbol": "THREE"
+        "exportedSymbol": "three"
     }
 }
 
 const mainEntry : {entryFile: string,loadDependencies:string[]} = {
     "entryFile": "./index.ts",
     "loadDependencies": [
-        "@youwol/vsf-core",
-        "rxjs"
+        "@youwol/vsf-core"
     ]
 }
 
@@ -74,7 +73,7 @@ const entries = {
 export const setup = {
     name:'@youwol/vsf-sci-three',
         assetId:'QHlvdXdvbC92c2Ytc2NpLXRocmVl',
-    version:'0.1.1',
+    version:'0.1.2-wip',
     shortDescription:"Visual Studio Flow toolbox gathering modules related to 3D scientific visualizations.",
     developerDocumentation:'https://platform.youwol.com/applications/@youwol/cdn-explorer/latest?package=@youwol/vsf-sci-three&tab=doc',
     npmPackage:'https://www.npmjs.com/package/@youwol/vsf-sci-three',
@@ -120,7 +119,7 @@ export const setup = {
         const parameters = installParameters || {}
         const scripts = [
             ...(parameters.scripts || []),
-            `@youwol/vsf-sci-three#0.1.1~dist/@youwol/vsf-sci-three/${entry.name}.js`
+            `@youwol/vsf-sci-three#0.1.2-wip~dist/@youwol/vsf-sci-three/${entry.name}.js`
         ]
         const modules = [
             ...(parameters.modules || []),
